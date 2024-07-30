@@ -35,7 +35,7 @@ const StudentFrom = ({
 }: ProductFromProps) => {
  
 
-  const [product, setProduct] = useState<Partial<Student>>({
+  const [product, setProduct] = useState({
     id: currentData?.id || 0,
     name: currentData?.name || "",
     email: currentData?.email || "",
@@ -44,8 +44,12 @@ const StudentFrom = ({
   });
 
   const onSave = () => {
+    console.log(currentData);
+    
     if (currentData?.id) {
       editProduct();
+      console.log("edidt");
+      
     } else {
       addStudent();
     }
@@ -97,15 +101,7 @@ const StudentFrom = ({
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <VStack alignItems={'self-start'} gap={3}>
-                <Input type="text" placeholder="Name" value={product.name} onChange={(e) => setProduct({...product, name:e.target.value})}/>
-                <Textarea  placeholder="Description" value={product.hobby} onChange={(e) => setProduct({...product, hobby:e.target.value})}/>
-               
-                <Text>
-                Is In Store
-                </Text>
-           
-            </VStack> */}
+            
 
             <VStack alignItems={"self-start"} gap={3}>
               <Input

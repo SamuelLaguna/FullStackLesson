@@ -73,8 +73,8 @@ const StudentTable = () => {
   const getStudent = (id: number) => {
     axios
       .get(BASE_URL + "Students/" + id)
-      .then(() => {
-        // setcurrentData(res.data);
+      .then((res) => {
+        setcurrentData(res.data);
         onOpen();
       })
       .catch((error) => {
@@ -125,30 +125,34 @@ const StudentTable = () => {
           <Table variant="striped" colorScheme="teal">
             <TableCaption>Imperial to metric conversion factors</TableCaption>
             <Thead>
+
+              
               <Tr>
+                <Th>Email</Th>
                 <Th>Name</Th>
-                <Th>Adress</Th>
                 <Th>Hobby</Th>
-                <Th isNumeric>Email</Th>
+                {/* <Th>Hobby</Th> */}
+                <Th isNumeric></Th>
               </Tr>
             </Thead>
             <Tbody>
           
               {data.map((student: Student) => (
                 <Tr>
-                  <Td> {student.id}</Td>
-                  <Td> {student.id}</Td>
+                  <Td> {student.email}</Td>
+              
                   <Td>
                     <HStack>
                       <Avatar size={"sm"} name={student.name} />
                       <Text>{student.name}</Text>
                     </HStack>
                   </Td>
-                  <Td> {student.name}</Td>
                   <Td> {student.hobby}</Td>
-                  <Td></Td>
-
+                 
+                    
+            
                   <Td>
+                    <Td>{student.hobby}</Td>
                     <HStack>
                       <EditIcon
                         onClick={() => getStudent(student.id)}
